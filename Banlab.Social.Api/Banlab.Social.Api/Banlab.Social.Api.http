@@ -1,0 +1,6 @@
+@Banlab.Social.Api_HostAddress = http://localhost:5049
+
+GET {{Banlab.Social.Api_HostAddress}}/post/
+Accept: application/json
+
+###
