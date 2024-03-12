@@ -2,13 +2,12 @@
 
 namespace Banlab.Social.Api.ViewModels
 {
-    public class CreatePost
+    public class CreatePostViewModel
     {
         [Required]
         public required string Caption { get; set; }
-        public required string OriginalImageUrl { get; set; }
-        public required string ResizedImageUrl { get; set; }
+        public required string ImageUrl { get; set; }
         public required string UserId { get; set; }
-        public required string Creator { get; set; }
+        public required string CreatorId { get; set; }
     }
 }
