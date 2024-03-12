@@ -30,7 +30,9 @@ namespace Banlab.Social.Api
 
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped<PostRepository>();
+            services.AddScoped<CommentRepository>();
             services.AddScoped<IPostService, PostService>();
+            services.AddScoped<ICommentService, CommentService>();
 
             return services;
         }

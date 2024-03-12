@@ -4,7 +4,13 @@ namespace Banlab.Social.Api.ViewModels
 {
     public class CreateCommentViewModel
     {
-        public string Content { get; set; }
-        public string CreatorId { get; set; }
+        [Required]
+        public required string Content { get; set; }
+
+        [Required]
+        public required string CreatorId { get; set; }
+
+        [Required]
+        public required string PostId { get; set; }
     }
 }

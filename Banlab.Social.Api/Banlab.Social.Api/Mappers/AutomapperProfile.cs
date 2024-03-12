@@ -10,6 +10,8 @@ namespace Banlab.Social.Api.Mappers
         {
             CreateMap<Post, CreatePostViewModel>();
             CreateMap<CreatePostViewModel, Post>().ConstructUsing(x => new Post(x.CreatorId, x.UserId, x.ImageUrl));
+            CreateMap<Comment, CreateCommentViewModel>();
+            CreateMap<CreateCommentViewModel, Comment>().ConstructUsing(x => new Comment(x.PostId, x.Content, x.CreatorId, x.CreatorId));
         }
     }
 }
