@@ -6,10 +6,12 @@ namespace Banlab.Social.Api.Domain
 {
     public class Post : BaseEntity
     {
+
+        private List<Comment> _comments;
         public Post() { 
         
         }
-        public Post(string creatorId, string userId, string imageUrl)
+        public Post(string creatorId, string userId, string imageUrl, List<Comment>? comments = null)
         {
             ArgumentNullException.ThrowIfNull(creatorId);
             ArgumentNullException.ThrowIfNull(imageUrl);
@@ -19,6 +21,7 @@ namespace Banlab.Social.Api.Domain
             CreatorId = creatorId;
             UserId = userId;
             CreatedAt = DateTime.UtcNow;
+            _comments = comments ?? [];
         }
         public string Caption { get; set; }
 
@@ -27,8 +30,35 @@ namespace Banlab.Social.Api.Domain
 
         public string CreatorId { get; set; }
 
+
         public string UserId { get; set; }
 
         public DateTime CreatedAt { get; private set; }
+
+        public IReadOnlyList<Comment> RecentComments { get => _comments.AsReadOnly(); }
+        public void IncreamentComment() => CommentsCount++;
+
+        public bool HasComment(Comment comment)
+        {
+           var findComments = _comments.Find(comment => comment.Id == Id);
+            return findComments != null;
+        }
+        public void AddToRecentCommentList(Comment comment)
+        {
+            if (RecentComments.Count < 2)
+                _comments.Append(comment);
+            else
+            {
+                var orderedComments = _comments.OrderBy(e => CreatedAt).ToList();
+                orderedComments[0] = comment;
+
+                _comments = orderedComments;
+            }
+        }
+
+        public bool RemoveFromRecentComments(Comment comment)
+        {
+            return _comments.Remove(comment);
+        }
     }
 }
