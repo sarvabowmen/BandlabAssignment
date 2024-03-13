@@ -11,5 +11,23 @@ namespace Banlab.Social.Api.Data.Repository
             : base(cosmosClient, cosmosSettings, PostsContainer)
         {
         }
+
+        public async Task<List<Post>> GetAllPostsByUser(string userId,int offset, int limit)
+        {
+            var parameterizedQuery = new QueryDefinition(query: "SELECT * FROM posts WHERE posts.userId = @userId ORDER BY posts.commentCount OFFSET 0 LIMIT 3").WithParameter("@userId", userId).WithParameter("@offset", offset - 1).WithParameter("@limit", limit);
+
+            using FeedIterator<Post> filteredFeed = _container.GetItemQueryIterator<Post>(queryDefinition: parameterizedQuery);
+            var postList = new List<Post>();
+            while (filteredFeed.HasMoreResults)
+            {
+                FeedResponse<Post> response = await filteredFeed.ReadNextAsync();
+                foreach (Post item in response)
+                {
+                    postList.Add(item);
+                }
+            }
+
+            return postList;
+        }
     }
 }

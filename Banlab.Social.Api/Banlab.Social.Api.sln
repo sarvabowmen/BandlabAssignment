@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Banlab.Social.Api", "Banlab.Social.Api\Banlab.Social.Api.csproj", "{44D7E714-7680-46BD-9BE4-832C42BD6F07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bandlab.Social.FunctionApp", "Bandlab.Social.FunctionApp\Bandlab.Social.FunctionApp.csproj", "{DACBF4F3-52FE-427D-B159-1EA59BE8268A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bandlab.Social.FunctionApp", "Bandlab.Social.FunctionApp\Bandlab.Social.FunctionApp.csproj", "{DACBF4F3-52FE-427D-B159-1EA59BE8268A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

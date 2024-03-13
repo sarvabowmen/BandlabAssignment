@@ -7,6 +7,7 @@ namespace Banlab.Social.Api.ViewModels
         [Required]
         public required string Caption { get; set; }
         public required string ImageUrl { get; set; }
+        public required string OriginalImageUrl { get; set; }
         public required string UserId { get; set; }
         public required string CreatorId { get; set; }
     }

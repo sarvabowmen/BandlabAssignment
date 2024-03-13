@@ -9,6 +9,8 @@ using Banlab.Social.Api.Data.Repository;
 using Banlab.Social.Api.Repositories;
 using Banlab.Social.Api.Services.Interfaces;
 using Banlab.Social.Api.Services;
+using Azure.Storage.Blobs;
+using Bandlab.Social.FunctionApp;
 
 namespace Banlab.Social.Api
 {
@@ -27,12 +29,14 @@ namespace Banlab.Social.Api
         {
             services.AddAutoMapper(typeof(AutoMapperProfile));
             ConfigureCosmosDb(services, config);
+            ConfigureBlobStorage(services, config);
 
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped<PostRepository>();
             services.AddScoped<CommentRepository>();
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<IImageService, ImageService>();
 
             return services;
         }
@@ -48,6 +52,15 @@ namespace Banlab.Social.Api
             services.Configure<CosmosDbOptions>(configuration.GetSection("CosmosDb"));
 
             services.AddSingleton(cosmosClient);
+        }
+
+        private static void ConfigureBlobStorage(IServiceCollection services, IConfiguration configuration)
+        {
+            var blobStorageSettings = configuration.GetSection(nameof(BlobStorageConfig)).Get<BlobStorageConfig>();
+            ArgumentNullException.ThrowIfNull(blobStorageSettings);
+
+            var blobServiceClient = new BlobServiceClient(blobStorageSettings.ConnectionString);
+            services.AddSingleton(blobServiceClient.GetBlobContainerClient(blobStorageSettings.Container));
         }
 
     }
