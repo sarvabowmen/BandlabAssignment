@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Banlab.Social.Api", "Banlab
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bandlab.Social.FunctionApp", "Bandlab.Social.FunctionApp\Bandlab.Social.FunctionApp.csproj", "{DACBF4F3-52FE-427D-B159-1EA59BE8268A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bandlab.Tests", "Bandlab.Tests\Bandlab.Tests.csproj", "{06C07ECA-5A48-4469-845F-EF6E19CB7742}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DACBF4F3-52FE-427D-B159-1EA59BE8268A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DACBF4F3-52FE-427D-B159-1EA59BE8268A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DACBF4F3-52FE-427D-B159-1EA59BE8268A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06C07ECA-5A48-4469-845F-EF6E19CB7742}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06C07ECA-5A48-4469-845F-EF6E19CB7742}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06C07ECA-5A48-4469-845F-EF6E19CB7742}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06C07ECA-5A48-4469-845F-EF6E19CB7742}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

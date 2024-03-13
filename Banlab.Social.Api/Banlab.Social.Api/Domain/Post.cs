@@ -1,4 +1,5 @@
 ﻿using Banlab.Social.Api.Data;
+using Microsoft.Extensions.Hosting;
 using System.Xml.Linq;
 using static Azure.Core.HttpHeader;
 
@@ -8,8 +9,8 @@ namespace Banlab.Social.Api.Domain
     {
 
         private List<Comment> _comments;
-        public Post() { 
-        
+        public Post() {
+            _comments = [];
         }
         public Post(string creatorId, string userId, string imageUrl, List<Comment>? comments = null)
         {
@@ -33,7 +34,7 @@ namespace Banlab.Social.Api.Domain
 
         public string UserId { get; set; }
 
-        public DateTime CreatedAt { get; private set; }
+        public DateTime CreatedAt { get; set; }
 
         public IReadOnlyList<Comment> RecentComments { get => _comments.AsReadOnly(); }
         public void IncreamentComment() => CommentsCount++;

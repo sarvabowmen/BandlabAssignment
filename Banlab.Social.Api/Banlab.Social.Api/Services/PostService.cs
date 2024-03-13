@@ -63,5 +63,14 @@ namespace Banlab.Social.Api.Services
 
             await _postsRepository.UpsertAsync(post);
         }
+
+        public async Task<List<Post>> GetAllPostsByUser(string userId, int pageNo, int pageSize)
+        {
+            var posts = await _postsRepository.GetAllPostsByUser(userId, pageNo, pageSize);
+            if (posts is null)
+                _logger.LogError("Posts not found User Id:{userId}", userId);
+
+            return posts;
+        }
     }
 }

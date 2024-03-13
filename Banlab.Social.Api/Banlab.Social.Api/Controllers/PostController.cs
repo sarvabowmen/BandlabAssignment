@@ -40,9 +40,10 @@ namespace Banlab.Social.Api.Controllers
         }
 
         [HttpGet("{userId}/{pageNumber:int?}/{pageSize:int?}")]
-        public async Task<IActionResult> GetPostListByUser(int userId, int pageNumber = 1, int pageSize = 10)
+        public async Task<IActionResult> GetPostListByUser(string userId, int pageNumber = 1, int pageSize = 10)
         {
-            return Ok();
+            var posts = await _postService.GetAllPostsByUser(userId, pageNumber, pageSize);
+            return new OkObjectResult(posts);
         }
     }
 }
