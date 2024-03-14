@@ -1,11 +1,16 @@
 # Architecture:
-![Bandlab drawio](https://github.com/sarvabowmen/BandlabAssignment/assets/17758649/2d97ddef-832d-4319-b9f3-1e30be89fd64)
+![Bandlab drawio (1)](https://github.com/sarvabowmen/BandlabAssignment/assets/17758649/30915156-11a4-4277-9163-c24e3c1ee1b5)
+
+
+### Data projection
+Images - 72 TB per month
+Comments - 100k * 2kb * 24* 30 = 144 GB
 
 # Datamodel
   1. Choice of Database - No SQL
        - Need horizontal scalablity
        - Need flexiblity in storing unstructed data
-       - High Write throughput for posts
+       - App is read heavy
   2. Data model
        - **posts** collection will have post caption, userId, postId image, recent comments (max 2), comment total count, Index is created for comment total count as we need to order by comment count for fetching cursor based paginated results.
        - partition key - CreatorId
