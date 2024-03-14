@@ -1,6 +1,8 @@
 using Banlab.Social.Api;
 using Banlab.Social.Api.Configuration;
+using Microsoft.AspNetCore.Diagnostics;
 using System.Configuration;
+using static System.Net.Mime.MediaTypeNames;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +28,26 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseExceptionHandler(exceptionHandlerApp =>
+{
+    exceptionHandlerApp.Run(async context =>
+    {
+        context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+
+        // using static System.Net.Mime.MediaTypeNames;
+        context.Response.ContentType = Text.Plain;
+
+        await context.Response.WriteAsync("An exception was thrown.");
+
+        var exceptionHandlerPathFeature =
+            context.Features.Get<IExceptionHandlerPathFeature>();
+
+        if (exceptionHandlerPathFeature?.Error is FileNotFoundException)
+        {
+            await context.Response.WriteAsync(" The file was not found.");
+        }
+    });
+});
 app.UseAuthorization();
 
 app.MapControllers();
