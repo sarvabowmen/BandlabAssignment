@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "3ab65cf9-55a3-40a9-89b3-b2179f256283",
+		"name": "Bandlab",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Image Upload",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:52619/api/Image",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52619",
+					"path": [
+						"api",
+						"Image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"caption\": \"Sample\",\r\n  \"imageUrl\": \"http://google.com\",\r\n  \"userId\": \"1\",\r\n  \"creatorId\": \"1\",\r\n  \"originalImageUrl\": \"http://google.com\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:52619/api/Post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52619",
+					"path": [
+						"api",
+						"Post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Comment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"content\": \"Comment Sample\",\r\n  \"creatorId\": \"1\",\r\n  \"postId\": \"01HRXS55395WHQAKBVW6DFG5RJ-1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:52619/api/Comment/post/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52619",
+					"path": [
+						"api",
+						"Comment",
+						"post",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Comment",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:52619/api/Comment/01HRXS5MCEZGWSZW2Z1J53GGYQ-1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52619",
+					"path": [
+						"api",
+						"Comment",
+						"01HRXS5MCEZGWSZW2Z1J53GGYQ-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Posts  With Pagination",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:52619/api/Post/1/1/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52619",
+					"path": [
+						"api",
+						"Post",
+						"1",
+						"1",
+						"10"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
